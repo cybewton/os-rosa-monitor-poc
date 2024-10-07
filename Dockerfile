@@ -21,4 +21,4 @@ RUN ["mvn", "clean", "package"]
 
 # Run the app
 RUN bash -c 'touch /app/target/hello-world-0.0.1-SNAPSHOT.jar'
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app/target/hello-world-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-Xloggc:/app/target/gc.log", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/target/hello-world-0.0.1-SNAPSHOT.jar"]
