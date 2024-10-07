@@ -1,10 +1,11 @@
-FROM java:8
+FROM amazoncorretto:8
 
 # Install maven to build project
-RUN wget --no-verbose -O /tmp/apache-maven.tar.gz http://archive.apache.org/dist/maven/maven-3/3.3.9/binaries/apache-maven-3.3.9-bin.tar.gz
-RUN echo "516923b3955b6035ba6b0a5b031fbd8b /tmp/apache-maven.tar.gz" | md5sum -c
+RUN curl -fsSL -o /tmp/apache-maven.tar.gz https://dlcdn.apache.org/maven/maven-3/3.9.9/binaries/apache-maven-3.9.9-bin.tar.gz
+RUN yum install -y tar gzip
+RUN mkdir -p /opt
 RUN tar xzf /tmp/apache-maven.tar.gz -C /opt/
-RUN ln -s /opt/apache-maven-3.3.9 /opt/maven
+RUN ln -s /opt/apache-maven-3.9.9 /opt/maven
 RUN ln -s /opt/maven/bin/mvn /usr/local/bin
 RUN rm -f /tmp/apache-maven.tar.gz
 ENV MAVEN_HOME /opt/maven
