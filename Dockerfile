@@ -26,6 +26,9 @@ COPY applicationinsights.json /app/applicationinsights.json
 # Build the app
 RUN ["mvn", "clean", "package"]
 
+# Expose the port
+EXPOSE 7777    
+
 # Run the app
 RUN bash -c 'touch /app/target/hello-world-0.0.1-SNAPSHOT.jar'
 ENTRYPOINT ["java", \
@@ -35,3 +38,4 @@ ENTRYPOINT ["java", \
     "--add-opens=java.base/java.lang=ALL-UNNAMED", \
     "--add-opens=java.base/java.util=ALL-UNNAMED", \
     "-jar","/app/target/hello-world-0.0.1-SNAPSHOT.jar"]
+
