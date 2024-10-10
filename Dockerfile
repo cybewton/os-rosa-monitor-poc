@@ -11,6 +11,8 @@ RUN rm -f /tmp/apache-maven.tar.gz
 ENV MAVEN_HOME /opt/maven
 ENV PATH $MAVEN_HOME/bin:$PATH
 
+RUN curl -fsSL -o /app/jolokia-agent-jvm-2.1.1-javaagent.jar https://repo1.maven.org/maven2/org/jolokia/jolokia-agent-jvm/2.1.1/jolokia-agent-jvm-2.1.1-javaagent.jar
+
 WORKDIR /app
 
 # Add POM and source
@@ -25,4 +27,4 @@ RUN ["mvn", "clean", "package"]
 
 # Run the app
 RUN bash -c 'touch /app/target/hello-world-0.0.1-SNAPSHOT.jar'
-ENTRYPOINT ["java","-javaagent:/app/applicationinsights-agent-3.6.0.jar", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/target/hello-world-0.0.1-SNAPSHOT.jar"]
+ENTRYPOINT ["java","-javaagent:jolokia-agent-jvm-2.1.1-javaagent.jar=port=7777,host=localhost", "-Djava.security.egd=file:/dev/./urandom","-jar","/app/target/hello-world-0.0.1-SNAPSHOT.jar"]
