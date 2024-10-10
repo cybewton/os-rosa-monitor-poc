@@ -1,3 +1,6 @@
 {
-    "connectionString": "InstrumentationKey=2ad8eef7-707d-4330-b164-a82bd6e04708;IngestionEndpoint=https://canadacentral-1.in.applicationinsights.azure.com/;LiveEndpoint=https://canadacentral.livediagnostics.monitor.azure.com/;ApplicationId=f8d3e111-25b3-4f51-bc53-014ec5e630c1"
+    "connectionString": "InstrumentationKey=2ad8eef7-707d-4330-b164-a82bd6e04708;IngestionEndpoint=https://canadacentral-1.in.applicationinsights.azure.com/;LiveEndpoint=https://canadacentral.livediagnostics.monitor.azure.com/;ApplicationId=f8d3e111-25b3-4f51-bc53-014ec5e630c1",
+    "role": {
+        "name": "hello-world"
+    }
 }
